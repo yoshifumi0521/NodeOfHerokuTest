@@ -6,6 +6,7 @@ $(function() {
    var socket = io.connect("http://localhost:3000/");
    socket.on('connect', function(){
      
+      //ここからsocket処理を書いていく。
       console.log("クライアント接続");
 
       socket.emit('login',{text:"loginしました"});
@@ -16,6 +17,20 @@ $(function() {
          console.log(data);
 
       });
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
 
    })
 
