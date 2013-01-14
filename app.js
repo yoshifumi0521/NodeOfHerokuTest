@@ -17,7 +17,7 @@ var io = require('socket.io').listen(app);
 io.sockets.on('connection', function (socket) {
 
    console.log("ソケットを接続"); 
-
+   console.log(socket);
 
 });
 
