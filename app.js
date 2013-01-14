@@ -12,9 +12,13 @@ var app = http.createServer(function (req, res) {
 
 console.log('Server running');
 
+
 var io = require('socket.io').listen(app);
+io.sockets.on('connection', function (socket) {
+
+   console.log("ソケットを接続"); 
 
 
-
+});
 
 
