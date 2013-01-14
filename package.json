@@ -1,19 +1,17 @@
-
 {
   "name": "test",
   "version": "0.0.1",
-  "dependencies": {
-  
-  },
+  "dependencies": {},
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
-  }
+  },
+  "description": "ERROR: No README.md file found!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD"
 }
-
-
-
-
-
-
-
