@@ -1,5 +1,5 @@
 
-web: node web.js
+web: node app.js
 
 
 
