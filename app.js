@@ -14,17 +14,8 @@ console.log('Server running');
 
 
 var io = require('socket.io').listen(app);
-io.sockets.on('connection', function (socket) {
 
-   console.log("サーバーサイドのソケット接続成功！"); 
-
-   
-
-
-
-});
-
-//設定 
+//Socket.ioの設定。long-pollingで対応する。 
 io.configure(function () {
 
    //HerokuではWebSocketがまだサポートされていない？ので、以下の設定が必要 
@@ -32,11 +23,29 @@ io.configure(function () {
    io.set("polling duration", 10); 
 
    // socket.ioのログ出力を抑制する
-   io.set('log level', 1);
+   //io.set('log level', 1);
+
+});
+
+
+io.sockets.on('connection', function (socket) {
+
+   console.log("サーバーサイドのソケット接続成功！"); 
+   //クライアントからmessageイベントが受信した時
+   socket.on('login',function(data){
+      
+      console.log(data);
+      //ログインしてる人に送る。
+      socket.broadcast.json.emit('login_message',{text: "誰かがログインしました。"+ socket.id });
+
+   
+   });
+   
 
 
 
 });
+
 
 
 
