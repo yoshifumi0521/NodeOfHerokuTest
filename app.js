@@ -36,14 +36,14 @@ io.sockets.on('connection', function (socket) {
    //クライアントからmessageイベントが受信した時
    socket.on('login',function(data){
       
-      console.log(data);
+      console.log("あるユーザーがログインした");
       //ログインしてる人に送る。
       //socket.broadcast.json.emit('login_message',{text: "誰かがログインしました。"+ socket.id });
 
    
    });
 
-   //クライアントからメッセージがきたらするイベント
+   //クライアントがメッセージ送信したときのイベント。メッセージの送信先にメッセージをおくる。
    socket.on("message",function(data){
    
       console.log("メッセージの送信");
