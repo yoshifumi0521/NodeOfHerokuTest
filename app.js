@@ -1,7 +1,7 @@
 
 var http = require('http');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 2000;
 var app = http.createServer(function (req, res) {
 
    res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -48,10 +48,15 @@ io.sockets.on('connection', function (socket) {
    
       console.log("メッセージの送信");
       var session_id = data["session_id"];
+      var receive_user_id = data["partner_id"];
+      var content = data["content"];
 
       //session_idが同じクライアントにメッセージをおくる。
-      socket.broadcast.json.emit("session_"+ session_id,{text: "メッセージ"});
+      socket.broadcast.json.emit("session_"+ session_id + "_user_" + receive_user_id,{content: content});
 
+       
+   
+   
    });
 
 
