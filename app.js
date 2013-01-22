@@ -50,9 +50,10 @@ io.sockets.on('connection', function (socket) {
       var session_id = data["session_id"];
       var receive_user_id = data["partner_id"];
       var content = data["content"];
+      var status = data["status"]
 
       //session_idが同じクライアントにメッセージをおくる。
-      socket.broadcast.json.emit("session_"+ session_id + "_user_" + receive_user_id,{content: content});
+      socket.broadcast.json.emit("session_"+ session_id + "_user_" + receive_user_id,{content: content,status: status});
 
        
    
@@ -60,7 +61,21 @@ io.sockets.on('connection', function (socket) {
    });
 
 
+   //クライアントが、セッションをパスしたときのイベント。
+   socket.on("pass_message",function(data){
+   
+      console.log("パスのメッセージを送信");
+      var review = data["review"];
+      var image = data["image"];
+      var receive_user_id = data["partner_id"];
+      var session_id = data["session_id"];
+      
+      console.log("aaaaaa");
+      socket.broadcast.json.emit("pass_session_"+session_id+"_user_"+receive_user_id,{review: review,image: image});  
 
+
+   
+   });
 
 
 
