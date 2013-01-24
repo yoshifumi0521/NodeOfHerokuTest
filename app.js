@@ -70,13 +70,28 @@ io.sockets.on('connection', function (socket) {
       var receive_user_id = data["partner_id"];
       var session_id = data["session_id"];
       
-      console.log("aaaaaa");
       socket.broadcast.json.emit("pass_session_"+session_id+"_user_"+receive_user_id,{review: review,image: image});  
 
 
    
    });
 
+   
+   //クライアントが、セッションをエンドしたときのイベント。
+   socket.on("end_message",function(data){
+   
+      console.log("エンドのメッセージを送信");
+      var review = data["review"];
+      var image = data["image"];
+      var receive_user_id = data["partner_id"];
+      var session_id = data["session_id"];
+      var rate = data["rate"];
+
+      socket.broadcast.json.emit("end_session_"+session_id+"_user_"+receive_user_id,{review: review,rate: rate,image: image});  
+
+
+   
+   });
 
 
 
